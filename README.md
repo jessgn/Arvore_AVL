@@ -1,6 +1,7 @@
 # Arvore_AVL
 
 Garantindo que uma Árvore seja do tipo AVL
+
 Caro Aluno,
 
 A tarefa da semana é a seguinte:
