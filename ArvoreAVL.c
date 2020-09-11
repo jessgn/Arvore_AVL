@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 /* 
-UFPR- Universidade Federal do Paran·
-TADS- Tecnologia em An·lise e Desenvolvimento de Sistemas
-Aluna : JÈssica Gustavo do Nascimento - GRR20185004
-ImplementaÁ„o de ·rvore AVL
+UFPR- Universidade Federal do Paran√°
+TADS- Tecnologia em An√°lise e Desenvolvimento de Sistemas
+Aluna : J√©ssica Gustavo do Nascimento - GRR20185004
+Implementa√ß√£o de √°rvore AVL
 Estrutura de Dados II- Professora Andreia de Jesus
 
 */
@@ -26,7 +26,7 @@ struct NO{
 	struct NO *dir;
 };
 
-//FUN«√O PARA CRIAR ¡RVORE AVL
+//FUN√á√ÉO PARA CRIAR √ÅRVORE AVL
 ArvAVL* cria_ArvAVL(){
 	ArvAVL* raiz=(ArvAVL*)malloc(sizeof(ArvAVL));
 	if(raiz != NULL)
@@ -35,7 +35,7 @@ ArvAVL* cria_ArvAVL(){
 	
 }
 
-//FUN«√O PARA DESTRUIR A ¡RVORE AVL
+//FUN√á√ÉO PARA DESTRUIR A √ÅRVORE AVL
 void libera_NO(struct NO* no){
 	if(no == NULL)
 		return;
@@ -48,7 +48,7 @@ void libera_NO(struct NO* no){
 void libera_ArvAVL(ArvAVL* raiz){
 	if(raiz == NULL)
 		return;
-	libera_NO(*raiz);//libera cada nÛ
+	libera_NO(*raiz);//libera cada n√≥
 	free(raiz);//libera a raiz
 }
 
@@ -80,7 +80,7 @@ int consulta_ArvAVL(ArvAVL *raiz, int valor){
 	return 0;
 }
 
-int alt_ArvAVL(ArvAVL *raiz) {		// a altura È calculada com basse no nÛ mais longe da raiz
+int alt_ArvAVL(ArvAVL *raiz) {		// a altura √© calculada com base no n√≥ mais longe da raiz
 	if(raiz == NULL)
 		return 0;
 	if(*raiz == NULL)
@@ -101,8 +101,8 @@ int estaVazia_ArvAVL(ArvAVL *raiz) {		//se retorna 1 esta vazia
 	return 0;
 }
 
-//FunÁıes auxiliares
-//Calcula a altura de um nÛ
+//Fun√ß√µes auxiliares
+//Calcula a altura de um n√≥
 int alt_NO(struct NO* no){
 	if( no == NULL)
 		return -1;
@@ -110,7 +110,7 @@ int alt_NO(struct NO* no){
 		return no->alt;
 }
 
-//Calcula o fator de balanceamento de um nÛ
+//Calcula o fator de balanceamento de um n√≥
 int fatorBalanceamento_NO(struct NO* no){
 	return labs(alt_NO(no->esq)- alt_NO(no->dir));
 }
@@ -123,7 +123,7 @@ int maior(int x, int y){
 		return y;
 }
 
-//RotaÁ„o simples a direita
+//Rota√ß√£o simples a direita
 void RotacaoLL(ArvAVL *raiz){
 		struct NO *no;
 		no = (*raiz)->esq;
@@ -134,7 +134,7 @@ void RotacaoLL(ArvAVL *raiz){
 		*raiz = no;
 }
 
-//RotaÁ„o simples a esquerda
+//Rota√ß√£o simples a esquerda
 void RotacaoRR(ArvAVL *raiz){
 	struct NO *no;
 	no = (*raiz)->dir;
@@ -145,13 +145,13 @@ void RotacaoRR(ArvAVL *raiz){
 	(*raiz) = no;
 }
 
-//RotaÁ„o dupla Esquerda-Direita
+//Rota√ß√£o dupla Esquerda-Direita
 void RotacaoLR(ArvAVL *raiz){
 	RotacaoRR(&(*raiz)->esq);
 	RotacaoLL(raiz);
 }
 
-//RotaÁ„o dupla Direita-Esquerda
+//Rota√ß√£o dupla Direita-Esquerda
 void RotacaoRL(ArvAVL *raiz){
 	RotacaoLL(&(*raiz)->dir);
 	RotacaoRR(raiz);
@@ -159,7 +159,7 @@ void RotacaoRL(ArvAVL *raiz){
 
 int insere_ArvAVL (ArvAVL *raiz, int valor){
 	int res;
-	if(*raiz == NULL){ //¡rvore vazia ou nÛ folha
+	if(*raiz == NULL){ //√Årvore vazia ou n√≥ folha
 		struct NO *novo;
 		novo = (struct NO*)malloc(sizeof(struct NO));
 		if(novo == NULL)
@@ -203,7 +203,7 @@ int insere_ArvAVL (ArvAVL *raiz, int valor){
 	return res;
 }
 
-//FUN«√O RESPONS¡VEL POR TRATAR A REMO«√O DE UM N” COM 2 FILHOS
+//FUN√á√ÉO RESPONS√ÅVEL POR TRATAR A REMO√á√ÉO DE UM N√ì COM 2 FILHOS
 struct NO* procuraMenor( struct NO* atual){
 		struct NO *no1 = atual;
 		struct NO *no2 = atual->esq;
@@ -214,7 +214,7 @@ struct NO* procuraMenor( struct NO* atual){
 		return no1;
 }
 
-//	FUN«√O RESPONS¡VEL PELA BUSCA DO N” A SER REMOVIDO
+//	FUN√á√ÉO RESPONS√ÅVEL PELA BUSCA DO N√ì A SER REMOVIDO
 int remove_ArvAVL(ArvAVL *raiz, int valor){
 	if(*raiz == NULL){
 		printf("O valor nao existe!!\n");
@@ -248,7 +248,7 @@ int remove_ArvAVL(ArvAVL *raiz, int valor){
  		else
  			*raiz = (*raiz)->dir;
  				free(oldNode);
-	 }else{// nÛ tem 2 filhos
+	 }else{// n√≥ tem 2 filhos
 	 	struct NO* temp = procuraMenor((*raiz)->dir);
 	 	(*raiz)->info = temp->info;
 	 	remove_ArvAVL(&(*raiz)->dir,(*raiz)->info);
@@ -281,12 +281,12 @@ int main(){
 		scanf("%d", &op);
 	
 		switch(op){
-			case 1://Insere na ·rvore
+			case 1://Insere na √°rvore
 				printf("Qual o valor deseja inserir?\n");
 				scanf("%d", &valor);
 				x = insere_ArvAVL (raiz, valor); 	 
 				break;
-			case 2://Remove da ·rvore
+			case 2://Remove da √°rvore
 				printf("Qual o valor a ser removido?\n");
 				scanf("%d", &valor);
 				x = remove_ArvAVL(raiz,valor);
@@ -295,7 +295,7 @@ int main(){
 				else
 					printf("No nao encontrado\n");
 				break;
-			case 3: //Consulta se tem na ·rvore o valor inserido
+			case 3: //Consulta se tem na √°rvore o valor inserido
 				printf("Qual o valor a ser procurado?\n");
 				scanf("%d", &valor);
 				x = consulta_ArvAVL(raiz, valor);
@@ -313,18 +313,18 @@ int main(){
 				x = alt_ArvAVL(raiz);
 				printf("%d\n", x);
 				break;
-			case 6://Verifica se a ·rvore est· vazia
+			case 6://Verifica se a √°rvore est√° vazia
 				if(estaVazia_ArvAVL(raiz))
 					printf("A arvore esta vazia\n");
 				else
 					printf("A arvore nao esta vazia\n");
 				break;
-			case 7://DestrÛi a ·rvore
-				libera_ArvAVL(raiz); //chamada da funÁao p liberar arvore inteira
+			case 7://Destr√≥i a √°rvore
+				libera_ArvAVL(raiz); //chamada da fun√ßao p liberar arvore inteira
 				printf("A arvore foi totalmente removida\n");
 				break;
 			default:
-				printf("OpÁ„o Invalida\n");
+				printf("Op√ß√£o Invalida\n");
 		}
 	}while(op != 8);
 	
